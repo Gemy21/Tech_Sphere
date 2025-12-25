@@ -50,7 +50,7 @@ const Hero = () => {
                         WebkitTextFillColor: 'inherit',
                     }}
                 >
-                    TECH SPHERE
+                    ATOMIA
                 </motion.div>
             </div>
 

@@ -35,90 +35,68 @@ const Electron = ({ radius, speed, offset, angleOffset = 0 }) => {
 
 const Atom = () => {
     const coreRef = useRef();
-    const glowRef = useRef();
-    const groupRef = useRef();
+    const orbitsRef = useRef();
 
     useFrame((state) => {
         const t = state.clock.getElapsedTime();
-        if (coreRef.current) {
-            coreRef.current.rotation.x = t * 0.2;
-            coreRef.current.rotation.y = t * 0.4;
+        if (orbitsRef.current) {
+            // The Atomic Body (Orbits) rotates around the nucleus
+            orbitsRef.current.rotation.y = t * 0.2;
+            orbitsRef.current.rotation.z = t * 0.1;
         }
-        if (glowRef.current) {
-            glowRef.current.scale.setScalar(1 + Math.sin(t * 1.5) * 0.08);
-        }
-        if (groupRef.current) {
-            groupRef.current.rotation.y = t * 0.2; // Smooth global rotation
-        }
+        // Nucleus 'A' is now perfectly fixed and facing forward
     });
 
     return (
-        <group ref={groupRef}>
-            {/* Nucleus - Deep Space Black Matter Core */}
+        <group>
+            {/* Nucleus - Liquid Metal Sphere */}
             <Float speed={2} rotationIntensity={1} floatIntensity={0.5}>
-                <group>
-                    {/* The Void / Black Matter */}
-                    <Sphere ref={coreRef} args={[0.85, 100, 100]}>
-                        <MeshDistortMaterial
-                            color="#020617" /* Ultra Deep Black/Blue */
-                            speed={3}
-                            distort={0.4}
-                            roughness={0.1}
-                            metalness={0.9}
-                            emissive="#000000"
-                        />
-                    </Sphere>
-
-                    {/* Backlight Glow - Soft white light behind the nucleus */}
-                    <Sphere args={[0.9, 64, 64]}>
-                        <meshBasicMaterial
-                            color="#ffffff"
-                            transparent
-                            opacity={0.15}
-                            side={THREE.BackSide}
-                        />
-                    </Sphere>
-
-                    {/* Core Interior Glow */}
-                    <Sphere args={[0.7, 32, 32]}>
-                        <meshBasicMaterial
-                            color="#ffffff"
-                            transparent
-                            opacity={0.05}
-                        />
-                    </Sphere>
-
-                    {/* Core Light source - subtle interior glow */}
-                    <pointLight intensity={2} distance={5} color="#ffffff" />
-                </group>
+                <Sphere ref={coreRef} args={[0.85, 100, 100]}>
+                    <MeshDistortMaterial
+                        color="#020617"
+                        speed={3}
+                        distort={0.4}
+                        roughness={0.1}
+                        metalness={0.9}
+                        emissive="#000000"
+                    />
+                </Sphere>
             </Float>
 
-            {/* Electron Orbits - High-speed Silver trails */}
-            <Electron radius={2.2} speed={1.8} offset={0} angleOffset={Math.PI / 4} />
-            <Electron radius={2.2} speed={1.5} offset={Math.PI} angleOffset={-Math.PI / 4} />
-            <Electron radius={3.2} speed={1.2} offset={2} angleOffset={Math.PI / 2} />
+            {/* Ambient Base Glow (Static center) */}
+            <Sphere args={[1.5, 32, 32]}>
+                <meshBasicMaterial color="#ffffff" transparent opacity={0.04} />
+            </Sphere>
 
-            {/* Visual Orbit Tracks - Delicate Silver Rings */}
-            <group rotation={[Math.PI / 4, 0, 0]}>
-                <mesh>
-                    <torusGeometry args={[2.2, 0.003, 16, 100]} />
-                    <meshStandardMaterial color="#ffffff" opacity={0.15} transparent />
-                </mesh>
-            </group>
-            <group rotation={[-Math.PI / 4, 0, 0]}>
-                <mesh>
-                    <torusGeometry args={[2.2, 0.003, 16, 100]} />
-                    <meshStandardMaterial color="#ffffff" opacity={0.15} transparent />
-                </mesh>
-            </group>
-            <group rotation={[0, 0, Math.PI / 2]}>
-                <mesh>
-                    <torusGeometry args={[3.2, 0.003, 16, 100]} />
-                    <meshStandardMaterial color="#ffffff" opacity={0.15} transparent />
-                </mesh>
+            {/* Orbiting System - Everything in this group rotates */}
+            <group ref={orbitsRef}>
+                {/* Electron Orbits */}
+                <Electron radius={2.2} speed={1.8} offset={0} angleOffset={Math.PI / 4} />
+                <Electron radius={2.2} speed={1.5} offset={Math.PI} angleOffset={-Math.PI / 4} />
+                <Electron radius={3.2} speed={1.2} offset={2} angleOffset={Math.PI / 2} />
+
+                {/* Visual Orbit Tracks */}
+                <group rotation={[Math.PI / 4, 0, 0]}>
+                    <mesh>
+                        <torusGeometry args={[2.2, 0.003, 16, 100]} />
+                        <meshStandardMaterial color="#ffffff" opacity={0.15} transparent />
+                    </mesh>
+                </group>
+                <group rotation={[-Math.PI / 4, 0, 0]}>
+                    <mesh>
+                        <torusGeometry args={[2.2, 0.003, 16, 100]} />
+                        <meshStandardMaterial color="#ffffff" opacity={0.15} transparent />
+                    </mesh>
+                </group>
+                <group rotation={[0, 0, Math.PI / 2]}>
+                    <mesh>
+                        <torusGeometry args={[3.2, 0.003, 16, 100]} />
+                        <meshStandardMaterial color="#ffffff" opacity={0.15} transparent />
+                    </mesh>
+                </group>
             </group>
 
-            {/* Subatomic Dust Particles */}
+            {/* Subatomic Dust Particles (Static ambient) */}
             {[...Array(40)].map((_, i) => (
                 <Sphere
                     key={i}

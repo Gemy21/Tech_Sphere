@@ -34,7 +34,9 @@ function App() {
       <About />
       <Contact />
       <footer style={{ padding: '4rem 2rem', textAlign: 'center', color: 'var(--text-muted)', borderTop: '1px solid rgba(255,255,255,0.05)', background: '#000' }}>
-        <p style={{ letterSpacing: '2px', fontSize: '0.8rem' }}>© 2025 TECH SPHERE. FORGED IN IMAGINATION.</p>
+        <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+          © 2025 ATOMIA. FORGED IN IMAGINATION.
+        </p>
       </footer>
     </main>
   );

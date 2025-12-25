@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import logo from '../assets/logo.png';
+
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,8 +50,19 @@ const Navbar = () => {
                 }}
             >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <img src={logo} alt="TechSphere Logo" style={{ width: scrolled ? '35px' : '45px', height: scrolled ? '35px' : '45px', transition: '0.4s' }} />
-                    <span style={{ fontWeight: 800, fontSize: '1.2rem', color: '#fff', display: scrolled ? 'none' : 'block' }}>TECH<span className="gradient-text">SPHERE</span></span>
+                    <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', width: scrolled ? '35px' : '45px', height: scrolled ? '35px' : '45px' }}>
+                        {/* Custom Atomic 'A' Logo SVG */}
+                        <svg viewBox="0 0 100 100" style={{ width: '100%', height: '100%', filter: 'drop-shadow(0 0 5px rgba(255,255,255,0.3))' }}>
+                            <circle cx="50" cy="50" r="15" fill="#000" stroke="#fff" strokeWidth="2" />
+                            <text x="50" y="58" textAnchor="middle" fontSize="22" fontWeight="900" fill="#fff" fontFamily="Arial">A</text>
+                            <ellipse cx="50" cy="50" rx="45" ry="18" fill="none" stroke="#64748b" strokeWidth="1" transform="rotate(45 50 50)" />
+                            <ellipse cx="50" cy="50" rx="45" ry="18" fill="none" stroke="#64748b" strokeWidth="1" transform="rotate(-45 50 50)" />
+                            <ellipse cx="50" cy="50" rx="45" ry="18" fill="none" stroke="#64748b" strokeWidth="1" transform="rotate(90 50 50)" />
+                        </svg>
+                    </div>
+                    <span style={{ fontWeight: 900, fontSize: '1.4rem', color: '#fff', letterSpacing: '4px' }}>
+                        ATOM<span className="gradient-text">IA</span>
+                    </span>
                 </div>
 
                 {/* Desktop Menu */}
