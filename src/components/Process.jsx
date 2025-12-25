@@ -3,19 +3,19 @@ import { motion } from 'framer-motion';
 
 const Process = () => {
     const steps = [
-        { num: "01", title: "Discovery", desc: "We dive deep into your requirements and business goals to map out the perfect solution." },
-        { num: "02", title: "Strategy", desc: "Architecting the system with metallic-grade precision and silver-plated logic." },
-        { num: "03", title: "Development", desc: "Our elite engineers forge the code using performance-first methodologies." },
-        { num: "04", title: "Deployment", desc: "Launching your high-fidelity digital asset with zero friction and maximum impact." }
+        { num: "01", title: "Visual Strategy", desc: "Mapping out the user journey with high-fidelity design prototypes and immersive wireframes." },
+        { num: "02", title: "Motion Design", desc: "Infusing the interface with fluid, cinematic animations that engage and delight users." },
+        { num: "03", title: "App Architecture", desc: "Engineering robust, scalable core structures for both web and standalone desktop platforms." },
+        { num: "04", title: "Elite Launch", desc: "Deploying your digital experience with precision, ensuring seamless performance across all devices." }
     ];
 
     return (
         <section id="process">
             <div style={{ textAlign: 'center', marginBottom: '80px' }}>
                 <h2 style={{ fontSize: '3.5rem', fontWeight: 800 }}>
-                    THE <span className="gradient-text">FORGE</span> PROCESS
+                    OUR <span className="gradient-text">STRATEGIC</span> FLOW
                 </h2>
-                <p style={{ color: 'var(--text-muted)', marginTop: '15px' }}>How we turn complex ideas into metallic reality.</p>
+                <p style={{ color: 'var(--text-muted)', marginTop: '15px' }}>Transforming abstract concepts into digital masterpieces.</p>
             </div>
 
             <div style={{

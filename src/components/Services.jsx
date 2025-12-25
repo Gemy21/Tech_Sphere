@@ -5,23 +5,23 @@ import { Cpu, Globe, Rocket, ShieldCheck } from 'lucide-react';
 const services = [
     {
         icon: <Globe size={40} />,
-        title: 'Silver Web Systems',
-        desc: 'Forging high-speed, metallic-grade web infrastructures for global scale.'
+        title: 'Immersive Web Design',
+        desc: 'Crafting stunning, high-fidelity visual identities that captivate and convert through elite UI/UX design.'
     },
     {
         icon: <Cpu size={40} />,
-        title: 'Chrome AI',
-        desc: 'Advanced intelligence layers wrapped in sleek, efficient silver-threaded code.'
+        title: 'Motion-Powered Experience',
+        desc: 'Breathing life into code with "insane" GSAP and Framer Motion animations that create unforgettable digital journeys.'
     },
     {
         icon: <Rocket size={40} />,
-        title: 'Tech Acceleration',
-        desc: 'Propelling your project into the future with ultra-fast software engineering.'
+        title: 'Desktop Architecture',
+        desc: 'Building powerful, cross-platform desktop applications with seamless performance and standalone reliability.'
     },
     {
         icon: <ShieldCheck size={40} />,
-        title: 'Polished Security',
-        desc: 'Unyielding, military-grade protection for your most valuable digital assets.'
+        title: 'Next-Gen Scalability',
+        desc: 'Architecting robust infrastructures that grow with your vision, ensuring speed, security, and global reach.'
     }
 ];
 
@@ -29,7 +29,7 @@ const Services = () => {
     return (
         <section id="services">
             <h2 style={{ fontSize: '3.5rem', fontWeight: 800, marginBottom: '60px', textAlign: 'center' }}>
-                ELITE <span className="gradient-text">SERVICES</span>
+                <span className="glitch-text" data-text="ELITE">ELITE</span> <span className="gradient-text">SERVICES</span>
             </h2>
 
             <div style={{

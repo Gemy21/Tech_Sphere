@@ -3,18 +3,18 @@ import { motion } from 'framer-motion';
 
 const Projects = () => {
     const projects = [
-        { title: "Project Obsidian", category: "AI Systems", img: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=800" },
-        { title: "Silver Cloud", category: "Infrastructure", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" },
-        { title: "Chrome OS v2", category: "Operating Systems", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" }
+        { title: "Lumina Web", category: "Immersive Design", img: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=800" },
+        { title: "Aether OS", category: "Desktop Architecture", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" },
+        { title: "Kinetic UIX", category: "Motion Experience", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" }
     ];
 
     return (
         <section id="projects">
             <div style={{ marginBottom: '60px' }}>
                 <h2 style={{ fontSize: '3.5rem', fontWeight: 800 }}>
-                    SELECTED <span className="gradient-text">FORGINGS</span>
+                    FEATURED <span className="gradient-text">CREATIONS</span>
                 </h2>
-                <p style={{ color: 'var(--text-muted)', marginTop: '10px' }}>Our latest elite software interventions.</p>
+                <p style={{ color: 'var(--text-muted)', marginTop: '10px' }}>A showcase of our most immersive digital interventions.</p>
             </div>
 
             <div style={{

@@ -26,7 +26,7 @@ const About = () => {
                 >
                     <h2 style={{ fontSize: isMobile ? '2.8rem' : '4rem', fontWeight: 800, marginBottom: '25px', lineHeight: 1.1 }}>
                         OUR <br />
-                        <span className="gradient-text">STEEL CORE</span>
+                        <span className="gradient-text">CREATIVE CORE</span>
                     </h2>
                     <p style={{
                         color: 'var(--text-muted)',
@@ -35,7 +35,7 @@ const About = () => {
                         marginBottom: '35px',
                         textAlign: isMobile ? 'center' : 'left'
                     }}>
-                        Born from the fusion of design and engineering excellence. We believe that the best software should not only work perfectly but should also radiate a sense of premium craftsmanship.
+                        We bridge the gap between imagination and execution. Our team is dedicated to transforming your vision into an immersive digital reality, combining high-end design with cinematic animations and robust software solutions.
                     </p>
                     <ul style={{
                         listStyle: 'none',
@@ -45,13 +45,13 @@ const About = () => {
                         padding: 0
                     }}>
                         <li style={{ marginBottom: '18px', display: 'flex', alignItems: 'center', gap: '10px', justifyContent: isMobile ? 'center' : 'flex-start' }}>
-                            <span style={{ color: '#fff' }}>✦</span> Elite Technical Craftsmanship
+                            <span style={{ color: '#fff' }}>✦</span> Masterful Visual Storytelling
                         </li>
                         <li style={{ marginBottom: '18px', display: 'flex', alignItems: 'center', gap: '10px', justifyContent: isMobile ? 'center' : 'flex-start' }}>
-                            <span style={{ color: '#fff' }}>✦</span> Future-Proof Architecture
+                            <span style={{ color: '#fff' }}>✦</span> Cinematic Motion & Interactivity
                         </li>
                         <li style={{ marginBottom: '18px', display: 'flex', alignItems: 'center', gap: '10px', justifyContent: isMobile ? 'center' : 'flex-start' }}>
-                            <span style={{ color: '#fff' }}>✦</span> High-Performance Execution
+                            <span style={{ color: '#fff' }}>✦</span> Powerful Desktop Infrastructure
                         </li>
                     </ul>
                 </motion.div>

@@ -1,7 +1,7 @@
 import React, { Suspense, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Float, PerspectiveCamera } from '@react-three/drei';
+import { Float } from '@react-three/drei';
 import Hero3D from './canvas/Hero3D';
 
 const Hero = () => {
@@ -21,17 +21,17 @@ const Hero = () => {
             justifyContent: 'space-between',
             alignItems: 'center',
             minHeight: '100vh',
-            gap: isMobile ? '20px' : '40px',
+            gap: isMobile ? '0' : '40px',
             position: 'relative',
             overflow: 'hidden'
         }}>
-            {/* Background Text Decor with Light Sweep Effect */}
+            {/* Background Text Decor */}
             <div style={{
                 position: 'absolute',
                 top: '50%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
-                fontSize: isMobile ? '8rem' : '20rem',
+                fontSize: isMobile ? '6rem' : '20rem',
                 fontWeight: 900,
                 zIndex: -1,
                 whiteSpace: 'nowrap',
@@ -61,7 +61,8 @@ const Hero = () => {
                 style={{
                     flex: 1,
                     textAlign: isMobile ? 'center' : 'left',
-                    zIndex: 2
+                    zIndex: 2,
+                    padding: isMobile ? '0 10px' : '0'
                 }}
             >
                 <motion.div
@@ -73,7 +74,7 @@ const Hero = () => {
                         padding: '5px 15px',
                         border: '1px solid rgba(255,255,255,0.2)',
                         borderRadius: '20px',
-                        fontSize: '0.7rem',
+                        fontSize: isMobile ? '0.65rem' : '0.7rem',
                         letterSpacing: '2px',
                         marginBottom: '20px',
                         color: 'var(--secondary)'
@@ -83,25 +84,26 @@ const Hero = () => {
                 </motion.div>
 
                 <h1 style={{
-                    fontSize: isMobile ? '3.5rem' : '6.5rem',
+                    fontSize: isMobile ? '3.2rem' : '6.5rem',
                     fontWeight: 900,
                     lineHeight: 0.9,
-                    marginBottom: '25px',
+                    marginBottom: '20px',
                     letterSpacing: '-2px'
                 }}>
-                    ELITE <br />
+                    <span className="glitch-text" data-text="ELITE">ELITE</span> <br />
                     <span className="gradient-text">METALIC</span> <br />
-                    PRECISION
+                    <span className="glitch-text" data-text="PRECISION">PRECISION</span>
                 </h1>
 
                 <p style={{
-                    fontSize: isMobile ? '1rem' : '1.3rem',
+                    fontSize: isMobile ? '1.1rem' : '1.3rem',
                     color: 'var(--text-muted)',
                     maxWidth: isMobile ? '100%' : '500px',
                     marginBottom: '40px',
-                    lineHeight: 1.5
+                    lineHeight: 1.5,
+                    marginInline: isMobile ? 'auto' : '0'
                 }}>
-                    Crafting the next generation of software with a focus on high-fidelity performance and silver-grade aesthetics.
+                    We create visually stunning websites with immersive animations and high-performance desktop applications.
                 </p>
 
                 <div style={{
@@ -116,19 +118,21 @@ const Hero = () => {
                         className="chrome-btn"
                         style={{ fontSize: '1rem', letterSpacing: '1px' }}
                     >
-                        INITIALIZE PROJECT
+                        START PROJECT
                     </motion.button>
                 </div>
             </motion.div>
 
             <div style={{
                 flex: 1,
-                height: isMobile ? '450px' : '700px',
+                height: isMobile ? '550px' : '700px', // Massive height for visibility
                 width: '100%',
-                position: 'relative'
+                position: 'relative',
+                marginTop: isMobile ? '-40px' : '0', // Pull it up slightly
+                pointerEvents: isMobile ? 'none' : 'auto', // Strictly disable touch capture on mobile container
+                touchAction: 'pan-y' // Ensure vertical touch moves the page
             }}>
-                <Canvas shadows>
-                    <PerspectiveCamera makeDefault position={[0, 0, 10]} fov={isMobile ? 45 : 35} />
+                <Canvas shadows camera={{ position: [0, 0, 10], fov: isMobile ? 25 : 35 }} style={{ pointerEvents: 'none' }}>
                     <Suspense fallback={null}>
                         <ambientLight intensity={0.6} />
                         <pointLight position={[10, 10, 10]} intensity={3} color="#ffffff" castShadow />
@@ -144,13 +148,6 @@ const Hero = () => {
                         <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.3}>
                             <Hero3D />
                         </Float>
-
-                        <OrbitControls
-                            enableZoom={false}
-                            autoRotate
-                            autoRotateSpeed={0.8}
-                            enableDamping
-                        />
                     </Suspense>
                 </Canvas>
 

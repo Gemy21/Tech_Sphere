@@ -36,6 +36,7 @@ const Electron = ({ radius, speed, offset, angleOffset = 0 }) => {
 const Atom = () => {
     const coreRef = useRef();
     const glowRef = useRef();
+    const groupRef = useRef();
 
     useFrame((state) => {
         const t = state.clock.getElapsedTime();
@@ -46,10 +47,13 @@ const Atom = () => {
         if (glowRef.current) {
             glowRef.current.scale.setScalar(1 + Math.sin(t * 1.5) * 0.08);
         }
+        if (groupRef.current) {
+            groupRef.current.rotation.y = t * 0.2; // Smooth global rotation
+        }
     });
 
     return (
-        <group>
+        <group ref={groupRef}>
             {/* Nucleus - Deep Space Black Matter Core */}
             <Float speed={2} rotationIntensity={1} floatIntensity={0.5}>
                 <group>
@@ -65,8 +69,27 @@ const Atom = () => {
                         />
                     </Sphere>
 
+                    {/* Backlight Glow - Soft white light behind the nucleus */}
+                    <Sphere args={[0.9, 64, 64]}>
+                        <meshBasicMaterial
+                            color="#ffffff"
+                            transparent
+                            opacity={0.15}
+                            side={THREE.BackSide}
+                        />
+                    </Sphere>
+
+                    {/* Core Interior Glow */}
+                    <Sphere args={[0.7, 32, 32]}>
+                        <meshBasicMaterial
+                            color="#ffffff"
+                            transparent
+                            opacity={0.05}
+                        />
+                    </Sphere>
+
                     {/* Core Light source - subtle interior glow */}
-                    <pointLight intensity={1.5} distance={3} color="#ffffff" />
+                    <pointLight intensity={2} distance={5} color="#ffffff" />
                 </group>
             </Float>
 
